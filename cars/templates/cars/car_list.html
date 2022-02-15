@@ -1,0 +1,35 @@
+{% extends "cars/base.html" %}
+{% block content %}
+<br/>
+<div class="container-sm shadow bg-dark text-white rounded">
+  <br/>
+  <form method="get">
+    {{ filter.form.as_table }}
+    <button type="submit">Search</button>
+  </form>
+  <h3> </h3>
+<div class="row mb-3" align="center">
+  {% for car in filter.qs %}
+  <div class="col-md-6 themed-grid-col border border-secondary">
+    <div class="row mb-3">
+      <div class="col-md-4 themed-grid-col">
+        <br/>
+        <img class="rounded-circle" src="{{car.image.url}}">
+      </div>
+      <div class="col-md-8 themed-grid-col">
+        <br/>
+        <h3 class="text-info">{{car.car_brand}}</h3>
+        <h5 class="text-success">Model: {{car.car_model}}</h5>
+        <h5>First Registration: {{car.first_reg}}</h5>
+        <br/>
+        <h4>{{car.odometer}} km</h4>
+        <br/>
+        <button type="button" class="btn btn-outline-warning">Buy Now</button>
+        <br/>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div>
+</div>
+{% endblock %}
