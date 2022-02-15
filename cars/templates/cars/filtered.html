@@ -1,0 +1,39 @@
+{% extends "cars/base.html" %}
+{% block content %}
+<br/>
+<div class="container-sm shadow bg-dark text-white rounded">
+  <br/>
+  <a href="/"><button type="button" class="btn btn-outline-primary">All</button></a>
+  {% for type in type_list %}
+  {% if type == sub_type %}
+  <a href="{% url 'filtered-results' type %}"><button type="button" class="btn btn-primary">{{ type }}</button></a>
+  {% else %}
+  <a href="{% url 'filtered-results' type %}"><button type="button" class="btn btn-outline-primary">{{ type }}</button></a>
+  {% endif %}
+  {% endfor %}
+  <h3> </h3>
+<div class="row mb-3" align="center">
+  {% for item in filter %}
+  <div class="col-md-6 themed-grid-col border border-secondary">
+    <div class="row mb-3">
+      <div class="col-md-4 themed-grid-col">
+        <br/>
+        <img class="rounded-circle" src="{{item.image.url}}">
+      </div>
+      <div class="col-md-8 themed-grid-col">
+        <br/>
+        <h3 class="text-info">{{item.title}}</h3>
+        <h5 class="text-success">Quantity: {{item.weight}} gr</h5>
+        <h5>{{item.description}}</h5>
+        <br/>
+        <h4>{{item.price}} BGN</h4>
+        <br/>
+        <button type="button" class="btn btn-outline-warning">Order</button>
+        <br/>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div>
+</div>
+{% endblock %}
