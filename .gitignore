@@ -8,6 +8,8 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+cars/migrations
+cars_images
 build/
 develop-eggs/
 dist/
