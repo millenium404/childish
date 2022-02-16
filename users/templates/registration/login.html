@@ -3,17 +3,13 @@
 <br/>
 <div class="container-sm shadow bg-dark text-white rounded" align="center">
   <br/>
-  {% if user.is_authenticated %}
-  <h3 class='text-info'>Add Your Car</h3>
+  <h3 class='text-info'>Login to your account</h3>
   <br/>
   <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
-    <button class="btn btn-primary" type="submit">Save</button>
+    <button class="btn btn-primary" type="submit">Login</button>
   </form>
   <br/>
 </div>
-{% else %}
-<h3 class="text-danger">You need to login to access this page!</h3>
-{% endif %}
 {% endblock %}

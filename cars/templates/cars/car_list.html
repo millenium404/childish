@@ -20,11 +20,15 @@
         <br/>
         <h3 class="text-info">{{car.car_brand}}</h3>
         <h5 class="text-success">Model: {{car.car_model}}</h5>
-        <h5>First Registration: {{car.first_reg}}</h5>
+        <h5>First Registration: {{car.first_reg|date:'F Y'}}</h5>
         <br/>
         <h4>{{car.odometer}} km</h4>
         <br/>
-        <button type="button" class="btn btn-outline-warning">Buy Now</button>
+        {% if user == car.owner %}
+        <a href="{% url 'car-delete' car.pk %}"><button type="button" class="btn btn-outline-danger">Delete</button></a>
+        {% else %}
+        <a href="#"><button type="button" class="btn btn-outline-warning">Buy Now</button></a>
+        {% endif %}
         <br/>
       </div>
     </div>

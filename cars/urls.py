@@ -1,9 +1,10 @@
 from django.urls import path
 from django.urls import re_path
-from .views import HomeView, AddUserCar, search
+from .views import AddUserCar, SearchView, SoftDeleteView
 
 urlpatterns = [
-    path('', search, name='home'),
+    path('', SearchView, name='home'),
     path('add-user-car/', AddUserCar.as_view(), name='add-user-car'),
-    re_path(r'^search/$', search, name='search')
+    path('cars/<int:pk>/delete/', SoftDeleteView, name='car-delete'),
+    re_path(r'^search/$', SearchView, name='search')
 ]

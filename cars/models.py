@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.urls import reverse
+from django.contrib.auth.models import User
 from PIL import Image
 
 
@@ -45,10 +46,10 @@ class CarModel(SoftDeleteModel):
 
 
 class UserCar(SoftDeleteModel):
-
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     car_brand = models.ForeignKey(CarBrand, null=True, on_delete=models.CASCADE)
     car_model = models.ForeignKey(CarModel, null=True, on_delete=models.CASCADE)
-    first_reg = models.CharField(max_length=50)
+    first_reg = models.DateTimeField(null=True, blank=True, default=None)
     odometer = models.CharField(max_length=50)
     image = models.ImageField(default='default.jpg', upload_to='')
 
