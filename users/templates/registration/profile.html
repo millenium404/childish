@@ -1,0 +1,27 @@
+{% extends "cars/base.html" %}
+{% block content %}
+<br/>
+<div class="container-sm shadow bg-dark text-white rounded" align="center">
+  <br/>
+<div class="col-md-4 themed-grid-col" align="center">
+  <div class="media">
+    <div class="media-body">
+      <h2 class="account-heading">{{ user.username }}</h2>
+      <p class="text-secondary">{{ user.email }}</p>
+    </div>
+  </div>
+  <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <fieldset class="form-group">
+          <legend class="border-bottom mb-4">Profile Info</legend>
+          {{ u_form.as_p }}
+          {{ p_form.as_p }}
+      </fieldset>
+      <div class="form-group">
+          <button class="btn btn-outline-info" type="submit">Update</button>
+      </div>
+  </form>
+  <br/>
+</div>
+</div>
+{% endblock content %}
