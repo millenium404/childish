@@ -4,6 +4,7 @@
 <div class="container-sm shadow bg-dark text-white rounded">
   <br/>
   <form method="get">
+    {% csrf_token %}
     {{ filter.form.as_table }}
     <button type="submit">Search</button>
   </form>
